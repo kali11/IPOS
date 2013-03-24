@@ -1,0 +1,32 @@
+<project default="pdf">
+  
+  <taskdef name="xinclude" classname="de.jeckle.AntExtension.XIncludeTask">
+  <classpath>
+    <pathelement path="libs/xia.jar" />
+    <pathelement path="libs/xincluder.jar" />
+  </classpath>
+  </taskdef>
+
+  <target name="show" depends="pdf">
+    <echo>Running evince...</echo>
+    <exec executable="evince">
+      <arg value="IPOS.pdf" />
+    </exec>
+  </target>
+
+  <target name="pdf">
+    <echo>Running pdflatex...</echo>
+    <exec executable="pdflatex">
+      <arg value="IPOS.tex" />
+    </exec>
+  </target>
+
+  <target name="clean">
+    <delete>
+      <fileset dir="." includes="**/*.aux" />
+      <fileset dir="." includes="**/*.log" />
+      <fileset dir="." includes="**/*.pdf" />
+    </delete>
+  </target>
+
+</project>
