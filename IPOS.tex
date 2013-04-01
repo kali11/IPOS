@@ -1,13 +1,27 @@
 \documentclass[11pt,a4paper]{article}
+\usepackage{geometry}
 \usepackage{graphicx}
 \usepackage[utf8x]{inputenc}
 \usepackage{polski}
 \usepackage{tabularx}
 \usepackage{color, colortbl}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\newgeometry{tmargin=3cm,bmargin=4cm, lmargin=4cm, rmargin=4cm}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+\pagestyle{fancy}
+\fancyhead[L]{\includegraphics[width=7cm]{images/baner.jpg}}
+\fancyhead[R]{}
+\fancyfoot[L]{}
+\fancyfoot[C]{IPOS}
+\fancyfoot[R]{Strona \thepage\ z \pageref{LastPage}}
 
 \definecolor{historiaZmianNaglowek}{gray}{0.8}
 
 \begin{document}
+  \textsc{}
+  \\[1cm]
   {\Large Historia zmian dokumentu}
   \begin{center}
     \begin{tabular}{ | l | l | l | }
@@ -15,7 +29,13 @@
       \hline
       Data & Autor & Czynność \\ \hline
       01.04.2013 & Piotr Fus & Utworzenie dokumentu \\ \hline
+      01.04.2013 & Piotr Fus & Opis realizacji projektu \\ \hline
+      01.04.2013 & Piotr Fus & Opis technologii \\ \hline
     \end{tabular}
   \end{center}
+  \newpage
+  \setcounter{page}{2}
+  \tableofcontents
+  \newpage
   \input{zakres_projektu.tex}
 \end{document}
