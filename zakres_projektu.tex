@@ -20,10 +20,67 @@
     System będzie przyjazny i intuicyjny w obsłudze, a pracownicy będą przeszkoleni w jego używaniu.
     \subsubsection{Cele biznesowe}
       Wykonanie projektu rozwija wiele możliwości biznesowych przechowywalni.
-      \begin{itemize}
+      \begin{enumerate}
         \item Usprawnienie dotychczasowego katalogowania opon, poprzez skanowanie kodów kreskowych opon.
         \item Uproszczenie zamawiania dostaw i odbiorów opon, przez dostarczenie tych możliwości przez interfejs WWW zamiast telefonicznego.
         \item Automatyzacja sprawdzania składu kompletów opon i przypisywania ich do właściciela.
         \item Zmniejszenie ilości zatrudnionych pracowników.
         \item Poprawienie wizerunku firmy, przez używania fachowego, dedykowanego oprogramowania.
+      \end{enumerate}
+    \subsubsection{Cele użytkowe}
+      Realizacja projektu przyniesie wiele korzyści w wielu obszarach przechowywalni.
+      \begin{enumerate}
+        \item Łatwe zamawianie dostarczenia i odbioru opon przez klientów.
+        \item Przejrzysty dostęp do informacji o firmie.
+        \item Uproszczone katalogowanie opon.
+        \item Scentralizowane informacje pozwalające w łatwy sposób przeszukiwać, filtrować i sortować dane zamówień i stanu magazynu.
+      \end{enumerate}
+    \subsubsection{Rzeczy nie objęte projektem}
+      Warto nadmienić, że projekt nie dostarcza pewnych rozwiązań.
+      \begin{enumerate}
+        \item Migracja dotychczasowej bazy danych.
+        \item Zarządzanie finansami firmy.
+        \item Możliwość samorejestracji klientów.
+        \item Obsługa kont mailowych pracowników.
+      \end{enumerate}
+  \subsection{Przegląd architektury}
+    \subsubsection{Realizacja fizyczna}
+      Rozwiązanie projektu będzie oparte na następujących maszynach.
+      \begin{itemize}
+        \item Serwer stojący pod kontrolą Red Hat Enterprise Linux, na którym będzie ustanowiona baza danych.
+        \item Serwer logiki biznesowej stojący pod kontrolą Ubuntu Linux w wersji Server, na którym będzie ustawiony serwer aplikacyjny.
+        \item Serwer WWW działający również pod kontrolą Ubuntu Linux w wersji Server, na którym będą umieszczone aplikacje WWW.
+        \item Serwer kopii zapasowych bazy danych, pod kontrolą Red Hat Enterprise Linux.
       \end{itemize}
+      Dodatkowo, wszystko będzie połączone siecią Ethernet 1Gbit i dwoma routerami Cisco 860 VAE działającymi w trybie zastępowania.
+      Warto również wspomnieć o tabletach z systemem operacyjnym Android z aplikacją katalogowania opon.
+    \subsubsection{Oprogramowanie składające się na rozwiązanie}
+      \begin{itemize}
+        \item PostgreSQL 9.1 - relacyjna baza danych, miejsce centralnego przechowywania danych na temat klientów, opon, dostaw i odbiorów.
+        \item JBoss AS 7.1.1 - serwer aplikacyjny Javy EE, udostępniający logikę dostępu do danych dla stron internetowych oraz aplikacji katalogowania opon.
+        \item Apache Tomcat 7 - kontener serwletów umożliwiający dostęp do systemu przez przeglądarkę internetową.
+        \item Java EE - platforma dostarczająca API do tworzenia aplikacji biznesowych przy użyciu języka Java, z wyszczególnieniem Seam framework.
+          \begin{itemize}
+            \item JPA - narzędzie klasy ORM udostępniające prosty dostęp do danych pochodzących z bazy danych.
+            \item EJB - biblioteka umożliwiająca w łatwy sposób tworzenie usług w systemie klient - serwer oraz przetwarzanie transakcyjne.
+            \item JSF - warstwa prezentacji, generująca wygląd stron internetowych.
+          \end{itemize}
+        \item Web services - umożliwiające komunikację między serwerem logiki a aplikacjami katalogowania opon.
+      \end{itemize}
+    \subsubsection{Podział aplikacji na moduły funkcjonalne}
+      Aplikacja będzie składała się z następujących modułów funkcjonalnych.
+      \begin{enumerate}
+        \item Część dostępna publicznie - dostępna przez interfejs WWW, prezentująca informacje o firmie, zamawianie opon dla uwierzytelnionych klientów.
+        \item Część dostępna dla pracowników - również dostępna przez interfejs WWW, pozwalająca na zarządzanie zamówieniami, przeglądanie historii i statystyk, przeszukiwanie bazy danych.
+        \item Aplikacja katalogowania opon - pozwalająca skanować kody kreskowe opon przy użyciu podłączonego do tabletu czytnika kodów kreskowych, a także umożliwiająca natychmiastowe przejrzenie wyników w bazie.
+      \end{enumerate}
+  \subsection{Dodatkowe wymagania}
+      \begin{enumerate}
+        \item System ma wyglądać fachowo i przyjaźnie, aby mógł stać się wizytówką firmy.
+        \item System ma zapewnić maksymalną dyspozycyjność i niezawodność.
+        \item System ma obsługiwać minimum 30 klientów i pracowników jednocześnie.
+      \end{enumerate}
+  \subsection{Podsumowanie}
+      Celem projektu jest ogólne poprawienie funkcjonowania firmy.
+      Kluczowym wydaje się być dobrze zaprojektowana struktura sieciowa, na której oparte jest przekazywanie informacji.
+      Bardzo istotne jest też, aby system działał stabilnie, a dla osób z niego korzystających był funkcjonalny i łatwy w obsłudze.
