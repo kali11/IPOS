@@ -3,6 +3,18 @@
 \usepackage[utf8x]{inputenc}
 \usepackage{polski}
 \usepackage{tabularx}
+\usepackage{color, colortbl}
+
+\definecolor{historiaZmianNaglowek}{gray}{0.8}
+
 \begin{document}
-  \input{hello.tex}
+  {\Large Historia zmian dokumentu}
+  \begin{center}
+    \begin{tabular}{ | l | l | l | }
+      \rowcolor{historiaZmianNaglowek}
+      \hline
+      Data & Autor & Czynność \\ \hline
+      01.04.2013 & Piotr Fus & Utworzenie dokumentu \\ \hline
+    \end{tabular}
+  \end{center}
 \end{document}
